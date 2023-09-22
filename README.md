@@ -6,4 +6,4 @@
 * First, I used the Leaflet Javascript library to pull data and map the location of the earthquakes. The second task is provide specific information on the earthquake, specifically the location, magnitude and depth. These features can be found when clicking on the marker. Finally the legend in the bottom corner of the screen shows the correlation between the depth of the earthquake and the color of the marker.
 
 ## Code
-The lessons from class provided the structure for the code. Our instructor also had a brainstorming session with the class, which helped with the syntax for the cirlce markers and the chooseColor and markerSize functions. I referenced leafletjs.com for the syntax on both the cirlce markers and the legend. 
+The lessons from class provided the structure for the code. Our instructor also had a brainstorming session with the class, which led to using cirlce markers and the idea for the chooseColor and markerSize functions. I referenced leafletjs.com for the syntax on both the cirlce markers and the legend. 
