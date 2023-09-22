@@ -6,34 +6,41 @@ let queryUrl = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_da
 d3.json(queryUrl).then(function (data) {
 
   console.log(data.features);
+  
+  
 
   // Using the features array sent back in the API data, create a GeoJSON layer, and add it to the map.
   function useFeature(feature, layer) {
   //   layer.bindPopup("<h3>" + feature.properties.place + "</h3><hr><p>" + new Date(feature.properties.time) + "</p>");
   // }
-       layer.bindPopup("<h3>" + feature.properties.place + "</h3><hr><p>" + feature.geometry.coordinates[2] + "</p>");
+       layer.bindPopup(`<h3>+ ${feature.properties.place}</h3 ><hr> <p>Depth: ${feature.geometry.coordinates[2]}</p> <hr>"
+      Magnitude: ${feature.properties.mag}</p>`
+       );
       }
   function chooseColor(depth) {
-   
+
 
     if (depth > 90) return 'red';
     else if (depth > 70) return  'orange';
     else if (depth > 50) return 'yellow';
     else if (depth > 30) return 'greenyellow';
     else return 'lime';
-    
-
   };
 
+  function markerSize(mag) {
+    return (mag) * 4;
+  }
+  
   let earthquakes = L.geoJSON(data.features, {
 
     style: function(feature) {
-      console.log(feature.geometry.coordinates[2])
+      console.log(feature.properties.mag);
       return {
         color: "black",
         fillColor: chooseColor(feature.geometry.coordinates[2]),
         fillOpacity: 0.5,
-        weight: 1.5
+        weight: 1.5,
+        radius: markerSize(feature.properties.mag)
       }
     },
     
